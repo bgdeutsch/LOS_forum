@@ -8,7 +8,29 @@
 </head>
 <body>
 
+<header>
+    <ul class='nav nav-tabs'>
+        <% if logged_in? %>
+            <!-- Change the 'home' link to posts index when I create that. -->
+            <li><%= link_to "Home", current_user %></li>
+            <li><%= link_to "Profile", current_user %></li>
+            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+            <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+    </ul>
+    <p class='welcome_user'>Welcome, <%= current_user.name %></p>
+        <% else %>
+            <li><%= link_to "Home", current_user %></li>
+            <li><%= link_to "Log in", login_path %></li>
+        <% end %>
+    </ul>
+</header>
+
+<div class='container'>
+    <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
 <%= yield %>
+</div>
 
 </body>
 </html>

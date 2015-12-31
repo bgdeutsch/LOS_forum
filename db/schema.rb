@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151229222713) do
+ActiveRecord::Schema.define(version: 20151231053701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,9 +21,15 @@ ActiveRecord::Schema.define(version: 20151229222713) do
     t.string   "email"
     t.string   "avatar_url"
     t.string   "password_digest"
-    t.boolean  "isadmin",         default: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.boolean  "isadmin",             default: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end
