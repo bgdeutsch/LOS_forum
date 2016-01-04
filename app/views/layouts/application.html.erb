@@ -15,6 +15,8 @@
             <li><%= link_to "Home", current_user %></li>
             <li><%= link_to "Profile", current_user %></li>
             <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+            <li><%= link_to "Constitution", static_constitution_path %></li>
+            <li><%= link_to "About", static_about_path %></li>
             <li><%= link_to "Log out", logout_path, method: "delete" %></li>
     </ul>
     <p class='welcome_user'>Welcome, <%= current_user.name %></p>

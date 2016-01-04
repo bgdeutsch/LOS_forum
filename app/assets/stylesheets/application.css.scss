@@ -22,7 +22,18 @@ body{
 
 .welcome_user{
 	float: right;
-    margin-top: -30px;
-    padding-right: 7px;
+  margin-top: -30px;
+  padding-right: 7px;
+	color: #91FFB8;
 }
-    
+
+td, th{
+	padding: 8px;
+}
+
+.nav.nav-tabs{
+	background-color: #333333;
+		a{
+			color: white;
+		}
+}

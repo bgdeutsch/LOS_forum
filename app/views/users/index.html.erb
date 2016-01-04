@@ -3,11 +3,6 @@
 <h1>Listing Users</h1>
 
 <table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
   
   <tbody>
     <% @users.each do |user| %>
@@ -15,7 +10,7 @@
         <td><%= image_tag user.avatar.url(:thumb) %></td>
         <td><%= link_to user.name, user %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        
         <td><% if current_user.isadmin? && !current_user?(user) %>
           | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %></td>
@@ -27,7 +22,6 @@
 </table>
 
 <br>
-<%= link_to "Forgot Password", new_password_reset_path %>
-<%= link_to 'Register', new_user_path %>
+
       
       

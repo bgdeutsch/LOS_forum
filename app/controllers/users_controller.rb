@@ -1,28 +1,31 @@
 class UsersController < ApplicationController
+  # before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :edit, :update]
+  before_action :correct_user,   only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :admin_user,     only: [:destroy]
+  # before_action :logged_in_user, only: [:edit, :update]
 
-  # GET /users
-  # GET /users.json
+
+
+
   def index
     @users = User.all
   end
 
-  # GET /users/1
-  # GET /users/1.json
+
   def show
   end
 
-  # GET /users/new
+
   def new
     @user = User.new
   end
 
-  # GET /users/1/edit
+
   def edit
   end
 
-  # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
 
@@ -38,12 +41,10 @@ class UsersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'Your settings were updated successfully.' }
+        format.html { redirect_to @user, notice: 'Profile updated successfully.' }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -52,8 +53,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     @user.destroy
     respond_to do |format|
@@ -62,11 +61,25 @@ class UsersController < ApplicationController
     end
   end
 
+  # Confirm that a user is 'logged in', for authorization purposes.
+  # Anonymous users will not have the same permissions as members.
   def logged_in_user
       unless logged_in?
         flash[:danger] = "Please log in."
-        redirect_to login_url
+        redirect_to '/login'
       end
+  end
+
+  # Confirm the correct user, for authorization purposes
+  # such as updating their own profile and not any other user's profile information.
+  def correct_user
+      @user = User.find(params[:id])
+      redirect_to('/login') unless @user == current_user
+  end
+
+  # Admin users will have special permissions, such as deleting members or posts.
+  def admin_user
+      redirect_to('/') unless current_user.isadmin?
   end
 
   private

@@ -3,37 +3,37 @@ class User < ActiveRecord::Base
 
     has_secure_password
 
-    validates :name, 
+    validates :name,
         presence: true
 
     email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-    validates :email, 
+    validates :email,
         presence: true,
         format: { with: email_regex },
         uniqueness: { case_sensitive: false }
 
-    validates :password, 
-        presence: true, 
+    validates :password,
+        presence: true,
         length: { minimum: 6 },
         confirmation: true,
         allow_nil: true
 
-    validates :password_confirmation, 
+    validates :password_confirmation,
         presence: true
 
     before_save   :downcase_email
 
-    attr_accessor :remember_token, 
+    attr_accessor :remember_token,
         :reset_token
 
-    has_attached_file :avatar, 
+    has_attached_file :avatar,
         styles: { medium: '300x300#', thumb: '100x100#' },
         default_url: 'avatar.png'
 
-    validates_attachment_content_type :avatar, 
+    validates_attachment_content_type :avatar,
         content_type: /\Aimage\/.*\Z/
-                      
+
 
 
     def User.digest(string)
@@ -68,15 +68,31 @@ class User < ActiveRecord::Base
         end
     end
 
+    # Allow a user to be "remembered" even if they close the browser, with cookies.
+    def remember
+        self.remember_token = User.new_token
+        update_attribute(:remember_digest, User.digest(remember_token))
+    end
+
+    # "Forgets" a user, if they choose to log out of a persistent session.
+    def forget
+        update_attribute(:remember_digest, nil)
+    end
+
+    # Returns true if the given token matches the digest.
+    def authenticated?(remember_token)
+      if remember_digest.nil?
+        false
+      else
+        BCrypt::Password.new(remember_digest).is_password?(remember_token)
+      end
+    end
+
    private
 
     def downcase_email
         self.email = email.downcase
     end
 
-    
-end
-    
-                         
-    
 
+end
