@@ -34,6 +34,9 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.10'
 gem 'paperclip', '~> 4.3', '>= 4.3.2'
 gem 'simple_form', '~> 3.2'
 gem 'bootstrap-sass', '~> 3.3.6'
+gem 'will_paginate',           '3.0.7'
+gem 'bootstrap-will_paginate', '~> 0.0.10'
+
 
 
 group :development, :test do
@@ -51,4 +54,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-

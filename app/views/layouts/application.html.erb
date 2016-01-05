@@ -5,19 +5,22 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
 </head>
+
 <body>
 
 <header>
-    <ul class='nav nav-tabs'>
+    <ul class='nav nav-pills'>
         <% if logged_in? %>
-            <!-- Change the 'home' link to posts index when I create that. -->
-            <li><%= link_to "Home", current_user %></li>
+
+            <li><%= link_to "Home", posts_path %></li>
             <li><%= link_to "Profile", current_user %></li>
             <li><%= link_to "Settings", edit_user_path(current_user) %></li>
             <li><%= link_to "Constitution", static_constitution_path %></li>
             <li><%= link_to "About", static_about_path %></li>
-            <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+            <li><%= link_to "Members", users_path %></li>
+            <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
     </ul>
     <p class='welcome_user'>Welcome, <%= current_user.name %></p>
         <% else %>

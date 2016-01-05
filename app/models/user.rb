@@ -1,6 +1,13 @@
 class User < ActiveRecord::Base
     # before_action :logged_in_user, only: [:edit, :update]
 
+    # Dependent destroy allows all posts by a specific user
+    # to be destroyed automatically if that user is deleted
+    # by administrators.
+    has_many :posts, dependent: :destroy
+
+    has_many :comments
+
     has_secure_password
 
     validates :name,
@@ -22,7 +29,7 @@ class User < ActiveRecord::Base
     validates :password_confirmation,
         presence: true
 
-    before_save   :downcase_email
+    before_save :downcase_email
 
     attr_accessor :remember_token,
         :reset_token

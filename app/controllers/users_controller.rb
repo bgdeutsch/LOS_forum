@@ -61,17 +61,17 @@ class UsersController < ApplicationController
     end
   end
 
-  # Confirm that a user is 'logged in', for authorization purposes.
-  # Anonymous users will not have the same permissions as members.
-  def logged_in_user
-      unless logged_in?
-        flash[:danger] = "Please log in."
-        redirect_to '/login'
-      end
-  end
+  # # Confirm that a user is 'logged in', for authorization purposes.
+  # # Anonymous users will not have the same permissions as members.
+  # def logged_in_user
+  #     unless logged_in?
+  #       flash[:danger] = "Please log in."
+  #       redirect_to '/login'
+  #     end
+  # end
 
-  # Confirm the correct user, for authorization purposes
-  # such as updating their own profile and not any other user's profile information.
+  # # Confirm the correct user, for authorization purposes
+  # # such as updating their own profile and not any other user's profile information.
   def correct_user
       @user = User.find(params[:id])
       redirect_to('/login') unless @user == current_user

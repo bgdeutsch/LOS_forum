@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<%= will_paginate @posts, :class => 'custom_pagination' %>
+<%= link_to 'New Topic', new_post_path, class: 'create_new_thread' %>
+<br />
+<br />
+<hr />
+
+<table class='table table-responsive table-bordered' id='posts'>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th style='text-align:center'>Replies</th>
+      <th style='text-align:center'>Favorites</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td class='topic'>
+          <h4><%= link_to post.title, post %></h4>
+          <small>Posted <%= time_ago_in_words(post.created_at) %> ago
+                 by <%= link_to post.user.name, post.user %>
+          </small>
+
+          <% if current_user?(post.user) %>
+            <span class='user_post_options'>
+              <%= link_to '<i class="fa fa-trash-o fa-lg"></i>'.html_safe, post, method: :delete, data: { confirm: 'Do you really want to delete this post?' } %>
+            </span>
+          <% end %>
+        <!-- Ends topic class td element -->
+        </td>
+        <td class='replies'>0</td>
+        <td class='replies'><%= post.favorites %></td>
+          <!-- <% if current_user?(post.user) %>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %> -->
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
