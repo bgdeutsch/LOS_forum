@@ -5,9 +5,7 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-
   resources :password_resets, only: [:new, :create, :edit, :update]
-
 
   get 'static/about'
   get 'static/constitution'
@@ -15,5 +13,5 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
-  get '/posts/:id/favorite', to: 'posts#favorite'
+  get '/posts/:id/favorite', to: 'posts#upvote'
 end

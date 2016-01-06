@@ -1,13 +1,13 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :upvote]
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user, only: :destroy
 
 
   def index
-    @posts = Post.order('created_at desc, sticky').paginate(:page => params[:page], :per_page => 10)
-    # @posts = Post.all
+    @posts = Post.order('sticky desc, created_at desc').paginate(:page => params[:page], :per_page => 10)
   end
+
 
 
   def show
@@ -58,12 +58,16 @@ class PostsController < ApplicationController
     end
   end
 
-  def favorite
-    @post = Post.find(params[:id])
-    @post.favorites += 1
-    @post.save
+  def upvote
+    @post.upvote_from current_user
     redirect_to posts_path
   end
+  # def favorite
+  #   @post = Post.find(params[:id])
+  #   @post.favorites += 1
+  #   @post.save
+  #   redirect_to posts_path
+  # end
 
 
   private

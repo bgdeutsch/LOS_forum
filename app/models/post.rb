@@ -12,6 +12,9 @@ class Post < ActiveRecord::Base
       presence: true,
       length: { maximum: 60 }
 
+    # Allows each post to be voted on.
+    acts_as_votable
+
   # Posts will be automatically ordered from top down,
   # starting with the most recently created.
   # The -> notation indicates a 'proc', or anonymous function.

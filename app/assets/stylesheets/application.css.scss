@@ -39,22 +39,38 @@ a, a:visited{
 	margin-top: 25px;
 }
 
-hr{
-	margin-top: 12px;
+hr{ margin-top: 12px; }
+
+img{ border-radius: 3px; }
+
+//Remove dots under simple form asterisk.
+abbr, accronym{ border-bottom: 0px!important; }
+
+.btn.btn-default.btn-sm{
+		letter-spacing: 3px;
+  	margin-top: -5px;
+}
+
+input[type="submit"] {
+		background: #FF725C;
+		border: none;
+		color: white;
+		padding: .5em 1em;
+		border-radius: 3px;
 }
 
 // Site header styles
 .welcome_user{
 	float: right;
-	margin-top: -33px;
+	margin-top: -37px;
 	padding-right: 12px;
 	color: #FF725C;
 }
 
 .nav.nav-pills{
 	background-color: #333333;
-	height: 46px;
-	padding: 4px;
+	height: 57px;
+	padding: 10px;
 	a{
 		color: white;
 	}
@@ -65,6 +81,7 @@ hr{
 
 .image_circular{
 	border-radius: 50%;
+	margin-top: -16px;
 }
 
 .dropdown{
@@ -72,8 +89,24 @@ hr{
 	margin-right: 22px;
 }
 
+.nav.nav-pills.guest{
+	background-color: #333333;
+	height: 57px;
+	padding: 4px;
+	float: right;
+	height: 30px;
+	margin-top: -4px;
+	a{
+		color: white;
+	}
+	a:hover{
+		background: none;
+	}
+}
 
-// Root route styles
+
+
+// Home page / Post index styles
 #posts{
 	margin-top: -5px;
 		.topic{
@@ -83,6 +116,7 @@ hr{
 		.replies{
 			text-align: center;
 			padding-top: 21px;
+			width: 38px;
 		}
 		th{
 			color: white;
@@ -100,8 +134,9 @@ td, th{
 
 .create_new_thread{
 		padding: .5em 1em;
-		border: 1px solid #FF725C;
-		border-radius: 0.3em;
+		border: 1px solid #ff725c;
+		background-color: #ff725c;
+		border-radius: 3px;
 		color: white;
 		text-decoration: none;
 		float: right;
@@ -117,6 +152,17 @@ td, th{
 		margin-top: -1.3em;
 		letter-spacing: 0.4px;
 		padding-right: 10px;
+}
+
+.glyphicon.glyphicon-pushpin{
+		float: left;
+		margin-top: 12px;
+		letter-spacing: 8px;
+}
+
+#already_voted{
+		background-color: #ff725c;
+		color: white;
 }
 
 //Post show page styles
@@ -136,7 +182,10 @@ td, th{
 .favorites{
 		float: right;
 		padding: 7px 10px;
+		color: #FF725C;
+		letter-spacing: 4px;
 }
+
 
 .post{
 		border: 1px solid #f1f1f1;
@@ -150,7 +199,21 @@ td, th{
     border-radius: 0.3em;
     margin-top: 8px;
 		height: 5px;
+			li a{
+				color: #FF725C;
+			}
 }
+
+.pagination li.active a{
+		background: #FF725C;
+		border-color: #FF725C;
+			&:hover{
+				 background: #FF725C;
+				 border-color: #FF725C;
+
+			}
+}
+
 
 .post_body{
 		float: right;
@@ -158,6 +221,7 @@ td, th{
 		padding:5px;
     padding-right: 1.5em;
 		width:73%;
+		padding-left: 1.25em;
 }
 
 .user_information{
@@ -176,3 +240,42 @@ td, th{
 		position: absolute;
 		padding: 5px;
 }
+
+.user_listing {
+  	list-style: none;
+  	margin: 0;
+		height: 130px;
+  	border-bottom: 1px solid #f1f1f1;
+}
+
+.image_float_left{
+	float: left;
+	padding-right: 15px;
+}
+
+.right{
+		float: right;
+		margin-top: -36px;
+}
+
+.left{
+	padding: 10px;
+}
+
+// Commments
+
+.comment_section{
+		textarea{
+				width: 100%;
+    		border: 1px solid #d1d1d1;
+    		border-radius: 3px;
+    		min-height: 165px;
+		}
+		// input[type="submit"] {
+		// 		background: #FF725C;
+		// 		border: none;
+		// 		color: white;
+		// 		padding: .5em 1em;
+		// 		border-radius: 3px;
+		// 	}
+		}

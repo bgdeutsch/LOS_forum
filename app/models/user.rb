@@ -41,6 +41,9 @@ class User < ActiveRecord::Base
     validates_attachment_content_type :avatar,
         content_type: /\Aimage\/.*\Z/
 
+    # Allows users to vote on posts
+    acts_as_voter
+
 
 
     def User.digest(string)

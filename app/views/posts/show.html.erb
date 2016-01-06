@@ -6,7 +6,7 @@
   <div class='post'>
     <header class='post_header'>
       <span class='post_created_at'><%= time_ago_in_words(@post.created_at) %> ago</span>
-      <span class='favorites'><%= @post.favorites %></span>
+      <span class='favorites'><span class="glyphicon glyphicon-heart"><%= @post.get_upvotes.size %></span></span>
     </header>
     <div class='user_information'>
       <%= image_tag @post.user.avatar.url(:thumb) %>
@@ -28,6 +28,8 @@
 
   <div class='comment_section'>
     <%= render @post.comments %>
+      <br />
+      <hr />
       <h3>Submit a reply</h3>
     <%= render 'comments/form' %>
   </div>

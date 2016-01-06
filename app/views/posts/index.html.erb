@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<%= will_paginate @posts, :class => 'custom_pagination' %>
+
 <%= link_to 'New Topic', new_post_path, class: 'create_new_thread' %>
 <br />
 <br />
@@ -19,6 +19,9 @@
     <% @posts.each do |post| %>
       <tr>
         <td class='topic'>
+          <% if post.sticky? %>
+          <span class='glyphicon glyphicon-pushpin'></span>
+          <% end %>
           <h4><%= link_to post.title, post %></h4>
           <small>Posted <%= time_ago_in_words(post.created_at) %> ago
                  by <%= link_to post.user.name, post.user %>
@@ -35,12 +38,24 @@
         <td class='replies'>
 
 
-        <button type="button" class="btn btn-default btn-sm">
-          <a href="/posts/<%= post.id %>/favorite">
-            <span class="glyphicon glyphicon-heart"></span><%= post.favorites %></span>
-          </a>
-        </button>
-      </td>
+
+          <% if current_user.voted_for?(post) %>
+          <button type="button" class="btn btn-default btn-sm", id="already_voted">
+            <span class="glyphicon glyphicon-heart"></span><%= post.get_upvotes.size %></span>
+          </button>
+
+          <% else %>
+
+          <button type="button" class="btn btn-default btn-sm">
+            <a href="/posts/<%= post.id %>/favorite">
+              <span class="glyphicon glyphicon-heart"></span><%= post.get_upvotes.size %></span>
+            </a>
+          </button>
+          <% end %>
+        </td>
+
+
+
 
 
 
@@ -53,3 +68,5 @@
         <% end %>
       </tbody>
     </table>
+
+    <%= will_paginate @posts, :class => 'custom_pagination' %>

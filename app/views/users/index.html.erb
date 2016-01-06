@@ -2,23 +2,22 @@
 
 <h2>Users</h2>
 
-<table>
+<div class='user_listing'>
+  <% @users.each do |user| %>
+    <%= image_tag user.avatar.url(:thumb), class: 'image_float_left' %>
+    <span class='left'>
+      <%= link_to user.name, user %></br>
+      <%= user.email %>
+    </span>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= image_tag user.avatar.url(:thumb) %></td>
-        <td><%= link_to user.name, user %></td>
-        <td><%= user.email %></td>
+    <span class='right'>
+      Posts: <%= user.posts.count %></br>
+      Member since: <%= user.created_at.strftime("%m/%d/%Y") %></br>
 
-        <td><% if current_user.isadmin? && !current_user?(user) %>
-          | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %></td>
-        <% end %>
-
-      </tr>
+    <% if current_user.isadmin? %>
+      <%= link_to "delete", user, method: :delete,
+      data: { confirm: "You sure?" } %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
+    </span>
+  <% end %>
+</div>

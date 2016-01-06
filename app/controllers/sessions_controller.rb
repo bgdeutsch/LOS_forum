@@ -12,12 +12,13 @@ class SessionsController < ApplicationController
       # call remember(user) to create a persistent session.
       # Else, call forget(user).
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to user
+      redirect_to posts_path
     else
       flash.now[:danger] = 'Sorry, you have entered an invalid email/password combination.'
       render 'new'
     end
   end
+
 
 
   def destroy

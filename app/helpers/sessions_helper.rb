@@ -6,15 +6,6 @@ module SessionsHelper
     end
 
     # Method to retrieve logged in user throughout the app.
-    # def current_user
-    #     if @current_user.nil?
-    #         @current_user = User.find_by(id: session[:user_id])
-    #     else
-    #         @current_user
-    #     end
-    # end
-
-    # Method to retrieve logged in user throughout the app.
     def current_user
       if (user_id = session[:user_id])
         @current_user ||= User.find_by(id: user_id)
