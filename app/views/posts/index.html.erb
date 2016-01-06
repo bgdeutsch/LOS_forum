@@ -31,7 +31,7 @@
           <% end %>
         <!-- Ends topic class td element -->
         </td>
-        <td class='replies'>0</td>
+        <td class='replies'><%= post.comments.count %></td>
         <td class='replies'><%= post.favorites %></td>
           <!-- <% if current_user?(post.user) %>
           <td><%= link_to 'Edit', edit_post_path(post) %></td>
