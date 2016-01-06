@@ -16,6 +16,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+// General styles
+
 body{
 	margin: 0 auto;
 	background: #EDEFF0;
@@ -30,14 +32,48 @@ a, a:visited{
 }
 
 .container{
-	width: 70%;
+	width: 80%;
 	max-width: 1500px;
 	margin: 0 auto;
 	background: white;
 	margin-top: 25px;
 }
 
-// FIX THIS LATER
+hr{
+	margin-top: 12px;
+}
+
+// Site header styles
+.welcome_user{
+	float: right;
+	margin-top: -33px;
+	padding-right: 12px;
+	color: #FF725C;
+}
+
+.nav.nav-pills{
+	background-color: #333333;
+	height: 46px;
+	padding: 4px;
+	a{
+		color: white;
+	}
+	a:hover{
+		background: none;
+	}
+}
+
+.image_circular{
+	border-radius: 50%;
+}
+
+.dropdown{
+	float: left;
+	margin-right: 22px;
+}
+
+
+// Root route styles
 #posts{
 	margin-top: -5px;
 		.topic{
@@ -58,27 +94,8 @@ a, a:visited{
 		}
 }
 
-.welcome_user{
-		float: right;
-		margin-top: -33px;
-		padding-right: 12px;
-		color: #FF725C;
-}
-
 td, th{
 		padding: 5px;
-}
-
-.nav.nav-pills{
-		background-color: #333333;
-		height: 46px;
-		padding: 4px;
-			a{
-				color: white;
-			}
-			a:hover{
-				background: none;
-			}
 }
 
 .create_new_thread{
@@ -102,6 +119,31 @@ td, th{
 		padding-right: 10px;
 }
 
+//Post show page styles
+.post_header{
+		background: #333333;
+    color: white;
+    width: 100%;
+    height: 2.5em;
+    border-radius: 3px;
+}
+
+.post_created_at{
+		float: left;
+    padding: 7px 6px;
+}
+
+.favorites{
+		float: right;
+		padding: 7px 10px;
+}
+
+.post{
+		border: 1px solid #f1f1f1;
+		border-radius: 3px;
+		position: relative;
+}
+
 .pagination {
     display: inline-block;
     padding-left: 0;
@@ -110,6 +152,27 @@ td, th{
 		height: 5px;
 }
 
-hr{
-	margin-top: 12px;
+.post_content{
+		float: right;
+    margin-top: -13.5em;
+		padding:5px;
+    padding-right: 1.5em;
+		width:73%;
+}
+
+.user_information{
+		height: 200px;
+		width: 189px;
+		border-right: 1px solid #f1f1f1;
+		background: #F0E3E1;
+		padding: 16px 12px;
+			img{
+				border-radius: 3px;
+			}
+}
+
+.users_post_options{
+		bottom: 0;
+		position: absolute;
+		padding: 5px;
 }

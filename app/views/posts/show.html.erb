@@ -1,33 +1,34 @@
 <p id="notice"><%= notice %></p>
 
 <div class='container'>
-  <p>
-    <strong>Title:</strong>
-    <%= @post.title %>
-  </p>
+  <h2><%= @post.title %></h2>
 
-  <p>
-    <strong>Content:</strong>
-    <%= @post.content %>
-  </p>
+  <div class='post'>
+    <header class='post_header'>
+      <span class='post_created_at'><%= time_ago_in_words(@post.created_at) %> ago</span>
+      <span class='favorites'><%= @post.favorites %></span>
+    </header>
+    <div class='user_information'>
+      <%= image_tag @post.user.avatar.url(:thumb) %>
+      <p><b><a href='/users/<%= @post.user.id %>'><%= @post.user.name %></a></b></p>
+      <small>Member since: <%= @post.user.created_at.strftime("%m/%d/%Y") %></small>
+      <small>Posts: <%= @post.user.posts.count %></small>
+    </div>
+    <div class='post_content'>
+      <%= @post.content %>
+      <% if current_user = @post.user.name %>
+      <div class='users_post_options'>
+        <%= link_to 'Edit', edit_post_path(@post) %> |
+        <%= link_to 'Back', posts_path %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 
-  <p>
-    <strong>Favorites:</strong>
-    <%= @post.favorites %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= @post.user.name %>
-  </p>
-
-  <%= link_to 'Edit', edit_post_path(@post) %> |
-  <%= link_to 'Back', posts_path %>
 
   <div class='comment_section'>
-    <h2><%= @post.comments.count %></h2>
-        <%= render @post.comments %>
-    <h3>Submit a reply</h3>
-        <%= render 'comments/form' %>
+    <%= render @post.comments %>
+      <h3>Submit a reply</h3>
+    <%= render 'comments/form' %>
   </div>
 </div>

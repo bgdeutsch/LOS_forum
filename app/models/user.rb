@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
         :reset_token
 
     has_attached_file :avatar,
-        styles: { medium: '300x300#', thumb: '100x100#' },
+        styles: { medium: '300x300#', thumb: '100x100#', small: '50x50#' },
         default_url: 'avatar.png'
 
     validates_attachment_content_type :avatar,

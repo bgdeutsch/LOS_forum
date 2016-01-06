@@ -3,7 +3,7 @@
 <head>
   <title>LebronV2</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => false %>
   <%= csrf_meta_tags %>
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
 </head>
@@ -16,19 +16,34 @@
 
             <li><%= link_to "Home", posts_path %></li>
             <li><%= link_to "Profile", current_user %></li>
-            <li><%= link_to "Settings", edit_user_path(current_user) %></li>
             <li><%= link_to "Constitution", static_constitution_path %></li>
             <li><%= link_to "About", static_about_path %></li>
             <li><%= link_to "Members", users_path %></li>
-            <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
-    </ul>
-    <p class='welcome_user'>Welcome, <%= current_user.name %></p>
-        <% else %>
-            <li><%= link_to "Home", current_user %></li>
-            <li><%= link_to "Log in", login_path %></li>
-        <% end %>
-    </ul>
+      </ul>
+
+
+    <div class='welcome_user'><%= image_tag current_user.avatar.url(:small), class: 'image_circular' %>
+      <div class="dropdown">
+        <a id="dLabel" data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+          Account
+          <span class="caret"></span>
+        </a>
+
+        <ul class="dropdown-menu" aria-labelledby="dLabel">
+          <li><%= link_to "Profile Settings", edit_user_path(current_user) %></li>
+          <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
+        </ul>
+      </div>
+    </div>
+    <% else %>
+      <ul>
+        <li><%= link_to "Home", current_user %></li>
+        <li><%= link_to "Log in", login_path %></li>
+      </ul>
+    <% end %>
 </header>
+
+
 
 <div class='container'>
     <% flash.each do |message_type, message| %>
@@ -37,5 +52,7 @@
 <%= yield %>
 </div>
 
+<script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script>
 </body>
 </html>
