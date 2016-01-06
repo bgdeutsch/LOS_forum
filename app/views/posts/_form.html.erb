@@ -4,7 +4,12 @@
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.input :content %>
+    <% if current_user.isadmin? %>
+    <%= f.label :sticky %>
+    <%= f.check_box :sticky %>
+    <% end %>
   </div>
+
 
   <input type="hidden" name="post[user_id]" value="<%= session[:user_id] %>" />
 

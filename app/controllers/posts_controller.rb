@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.paginate(:page => params[:page], :per_page => 10)
+    @posts = Post.order('created_at desc, sticky').paginate(:page => params[:page], :per_page => 10)
     # @posts = Post.all
   end
 
@@ -58,6 +58,14 @@ class PostsController < ApplicationController
     end
   end
 
+  def favorite
+    @post = Post.find(params[:id])
+    @post.favorites += 1
+    @post.save
+    redirect_to posts_path
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -66,7 +74,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :content, :favorites, :user_id)
+      params.require(:post).permit(:title, :content, :favorites, :user_id, :sticky)
     end
 
     def correct_user

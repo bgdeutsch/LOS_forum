@@ -1,16 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Users</h1>
+<h2>Users</h2>
 
 <table>
-  
+
   <tbody>
     <% @users.each do |user| %>
       <tr>
         <td><%= image_tag user.avatar.url(:thumb) %></td>
         <td><%= link_to user.name, user %></td>
         <td><%= user.email %></td>
-        
+
         <td><% if current_user.isadmin? && !current_user?(user) %>
           | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %></td>
@@ -22,6 +22,3 @@
 </table>
 
 <br>
-
-      
-      

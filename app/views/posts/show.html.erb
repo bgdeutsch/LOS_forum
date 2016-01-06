@@ -14,7 +14,7 @@
       <small>Member since: <%= @post.user.created_at.strftime("%m/%d/%Y") %></small>
       <small>Posts: <%= @post.user.posts.count %></small>
     </div>
-    <div class='post_content'>
+    <div class='post_body'>
       <%= @post.content %>
       <% if current_user = @post.user.name %>
       <div class='users_post_options'>

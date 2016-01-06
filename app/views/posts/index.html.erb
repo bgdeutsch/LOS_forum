@@ -32,7 +32,19 @@
         <!-- Ends topic class td element -->
         </td>
         <td class='replies'><%= post.comments.count %></td>
-        <td class='replies'><%= post.favorites %></td>
+        <td class='replies'>
+
+
+        <button type="button" class="btn btn-default btn-sm">
+          <a href="/posts/<%= post.id %>/favorite">
+            <span class="glyphicon glyphicon-heart"></span><%= post.favorites %></span>
+          </a>
+        </button>
+      </td>
+
+
+
+
           <!-- <% if current_user?(post.user) %>
           <td><%= link_to 'Edit', edit_post_path(post) %></td>
           <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>

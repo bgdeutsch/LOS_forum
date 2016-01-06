@@ -16,5 +16,6 @@ class Post < ActiveRecord::Base
   # starting with the most recently created.
   # The -> notation indicates a 'proc', or anonymous function.
   # This is also known as a 'stabby lambda'.
-  default_scope -> { order(created_at: :desc) }
+  # default_scope -> { order(sticky, created_at: :desc) }
+
 end
