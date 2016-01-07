@@ -37,7 +37,7 @@
     </div>
     <% else %>
       <ul class='nav nav-pills guest'>
-        <li><%= link_to "Home", current_user %></li>&nbsp;
+
         <li><%= link_to "Log in", login_path %></li>&nbsp;
         <li><%= link_to "Sign Up", new_user_path %></li>
       </ul>
@@ -52,9 +52,11 @@
     <% end %>
 <%= yield %>
 <br />
-<hr />
+<br />
+<hr style='clear: both' />
 <br />
 </div>
+
 
 <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
 <!-- <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js'></script> -->
