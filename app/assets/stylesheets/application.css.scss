@@ -15,13 +15,17 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 // General styles
+
 
 body{
 	margin: 0 auto;
 	background: #EDEFF0;
+	font-family: 'Open Sans', sans-serif;
 }
+
 
 a:hover{
 	text-decoration: none;
@@ -251,15 +255,23 @@ td, th{
 .image_float_left{
 	float: left;
 	padding-right: 15px;
+	margin-left: 50px;
 }
 
 .right{
 		float: right;
 		margin-top: -36px;
+		font-weight: bold;
+		padding: 1em;
+		width: 41%;
+			a{
+				color: red;
+			}
 }
 
-.left{
-	padding: 10px;
+
+.left a{
+	font-weight: bold;
 }
 
 // Commments
