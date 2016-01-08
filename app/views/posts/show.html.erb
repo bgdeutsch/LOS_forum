@@ -15,8 +15,8 @@
       <small>Posts: <%= @post.user.posts.count %></small>
     </div>
     <div class='post_body'>
-      <%= @post.content %>
-      <% if current_user = @post.user.name %>
+      <%= simple_format(@post.content) %>
+      <% if current_user = @post.user.name %><br /><br />
       <div class='users_post_options'>
         <button class='btn btn-default btn-sm'><%= link_to 'Edit', edit_post_path(@post) %></button>
         <button class='btn btn-default btn-sm'><%= link_to 'Back', posts_path %></button>

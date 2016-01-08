@@ -22,6 +22,10 @@
 $reddish: #dd5858;
 $dark: #333333;
 
+html, body{
+		height: 100%;
+}
+
 body{
 		margin: 0 auto;
 		background: #EDEFF0;
@@ -258,6 +262,8 @@ td, th{
 		border: 1px solid #f1f1f1;
 		border-radius: 3px;
 		position: relative;
+		overflow: auto;
+		min-height: 250px;
 }
 
 .pagination {
@@ -282,7 +288,7 @@ td, th{
 
 .post_body{
 		float: right;
-		margin-top: -13.5em;
+		margin-top: 0.5em;
 		padding:5px;
 		padding-right: 1.5em;
 		width:73%;
@@ -290,7 +296,8 @@ td, th{
 }
 
 .user_information{
-		height: 200px;
+		height: 100%;
+		position: absolute;
 		width: 189px;
 		border-right: 1px solid #f1f1f1;
 		background: #F0E3E1;
