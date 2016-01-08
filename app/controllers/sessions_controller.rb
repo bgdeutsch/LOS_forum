@@ -4,20 +4,23 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      # Log in, remember, and redirect the user to their profile.
-      log_in user
-      # If the user has checked the 'remember me' option when logging in,
-      # call remember(user) to create a persistent session.
-      # Else, call forget(user).
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to posts_path
-    else
-      flash.now[:danger] = 'Sorry, you have entered an invalid email/password combination.'
-      render 'new'
-    end
-  end
+   user = User.find_by(email: params[:session][:email].downcase)
+   if user && user.authenticate(params[:session][:password])
+     if user.activated?
+       log_in user
+       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
+       redirect_back_or user
+     else
+       message  = "Account not activated - Check your email for details "
+       flash[:warning] = message
+       redirect_to root_url
+     end
+   else
+     flash.now[:danger] = 'Invalid email/password combination'
+     render 'new'
+   end
+ end
+
 
 
 

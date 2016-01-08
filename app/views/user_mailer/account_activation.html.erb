@@ -1,0 +1,10 @@
+<h1>Lebron on Skates</h1>
+
+<p>YO <%= @user.name %>,</p>
+
+<p>
+Welcome to Lebron on Skates!  That's LOS version 2, y'all.  Click on the link below to activate your account:
+</p>
+
+<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+                                                    email: @user.email) %>

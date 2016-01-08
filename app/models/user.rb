@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
     has_secure_password
 
+    before_create :create_activation_digest
+
     validates :name,
         presence: true
 
@@ -32,7 +34,8 @@ class User < ActiveRecord::Base
     before_save :downcase_email
 
     attr_accessor :remember_token,
-        :reset_token
+        :reset_token,
+        :activation_token
 
     has_attached_file :avatar,
         styles: { medium: '300x300#', thumb: '100x100#', small: '50x50#' },
@@ -63,6 +66,11 @@ class User < ActiveRecord::Base
         update_attribute(:reset_sent_at, Time.zone.now)
     end
 
+    def create_activation_digest
+        self.activation_token  = User.new_token
+        self.activation_digest = User.digest(activation_token)
+    end
+
     def send_password_reset_email
         UserMailer.password_reset(self).deliver_now
     end
@@ -90,12 +98,21 @@ class User < ActiveRecord::Base
     end
 
     # Returns true if the given token matches the digest.
-    def authenticated?(remember_token)
-      if remember_digest.nil?
-        false
-      else
-        BCrypt::Password.new(remember_digest).is_password?(remember_token)
-      end
+    def authenticated?(attribute, token)
+      digest = send("#{attribute}_digest")
+      return false if digest.nil?
+      BCrypt::Password.new(digest).is_password?(token)
+    end
+
+    # Activates an account.
+    def activate
+     update_attribute(:activated,    true)
+     update_attribute(:activated_at, Time.zone.now)
+    end
+
+    # Sends activation email.
+    def send_activation_email
+      UserMailer.account_activation(self).deliver_now
     end
 
    private

@@ -1,0 +1,6 @@
+
+YO <%= @user.name %>,
+
+Welcome to the new Lebron on Skates!  That's LOS v2, y'all!  Click on the link below to activate your account:
+
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
