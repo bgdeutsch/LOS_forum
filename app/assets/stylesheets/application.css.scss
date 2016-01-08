@@ -10,8 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require_tree .
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
@@ -88,6 +88,24 @@ abbr, accronym{ border-bottom: 0px!important; }
 		border: 1px solid $reddish;
 }
 
+input:focus {
+    border-color: $reddish;
+    box-shadow: 0 0 5px rgba(207, 220, 0, 0.4);
+}
+
+form:focus {
+    border-color: $reddish;
+    box-shadow: 0 0 5px rgba(207, 220, 0, 0.4);
+}
+
+.form-control:focus {
+    border-color: $reddish;
+    box-shadow: 0 0 5px rgba(207, 220, 0, 0.4);
+}
+
+@input-border-focus{
+	border-color: $reddish;
+}
 
 input[type="submit"] {
 		background: $reddish;
