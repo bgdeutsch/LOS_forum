@@ -125,7 +125,7 @@ input[type="submit"] {
 		border-radius: 3px;
 	}
 
-h1{ text-align: center; }
+h1, h2{ text-align: center; }
 
 .static{
 		p{
@@ -426,28 +426,23 @@ td, th{
 				border-radius: 3px;
 				margin-left: -21px;
 			}
-			form{
-				margin-top: 49px;
-			}
-			input[type='submit']{
-				width: 100%;
-			}
-			p{
-				text-align: center;
-			}
+			form{ margin-top: 49px; }
+			input[type='submit']{ width: 100%; }
+			p{ text-align: center; }
+			textarea{ height: 100px; }
 }
 
 .new_post_form{
-		padding: 1.5em;
-		margin-left: 222px;
-		border: 1px solid $dark;
-		border-radius: 3px;
-		position: relative;
-		width: 51%;
-		margin-top: 52px;
-			input{ width: 100%; }
-			textarea{
-				width: 100%;
-				height: 150px;
-		}
+	padding: 1.5em;
+	margin-left: 222px;
+	border: 1px solid $dark;
+	border-radius: 3px;
+	position: relative;
+	width: 51%;
+	margin-top: 52px;
+	input{ width: 100%; }
+	textarea{
+		width: 100%;
+		height: 150px;
+	}
 }

@@ -34,7 +34,7 @@
 
 
 
-          <% if current_user.voted_for?(post) %>
+          <% if current_user && current_user.voted_for?(post) %>
           <button type="button" class="btn btn-default btn-sm", id="already_voted">
             <span class="glyphicon glyphicon-heart"></span><%= post.get_upvotes.size %></span>
           </button>

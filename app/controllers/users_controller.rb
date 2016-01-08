@@ -54,8 +54,8 @@ class UsersController < ApplicationController
   def correct_user
     @user = User.find(params[:id])
     redirect_to root_url unless @user == current_user
-    flash.now[:warning] = 'Sorry, you are not authorized for that action.'
   end
+
 
   # Admin users will have special permissions, such as deleting members or posts.
   def admin_user
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def set_user
     @user = User.find(params[:id])
   end
