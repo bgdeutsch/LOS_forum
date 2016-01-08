@@ -23,5 +23,5 @@ User.create!(name:  "Joe",
             isadmin: true,
             activated: true,
             activated_at: Time.zone.now,
-            titles: 0,
-            sackos: 3)
+            titles: 1,
+            sackos: 0)
