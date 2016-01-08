@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
-
-
-<%= link_to 'New Topic', new_post_path, class: 'create_new_thread' %>
-<br />
 <br />
 <hr />
-
 <table class='table table-responsive table-bordered' id='posts'>
   <thead>
     <tr>
@@ -46,7 +41,7 @@
 
           <% else %>
 
-          <button type="button" class="btn btn-default btn-sm">
+          <button type="button" style='margin-top:-6px' class="btn btn-default btn-sm">
             <a href="/posts/<%= post.id %>/favorite">
               <span class="glyphicon glyphicon-heart"></span><%= post.get_upvotes.size %></span>
             </a>
@@ -59,4 +54,5 @@
       </tbody>
     </table>
 
+    <%= link_to 'New Thread', new_post_path, class: 'create_new_thread' %>
     <%= will_paginate @posts, :class => 'custom_pagination' %>

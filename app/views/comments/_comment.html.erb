@@ -2,12 +2,34 @@
   <ul>
     <li>
       <div class='post'>
+        <header class='post_header'>
+          <span class='post_created_at'><%= time_ago_in_words(comment.created_at) %> ago</span>
+        </header>
+
+      <div class='user_information'>
+        <%= image_tag comment.post.user.avatar.url(:thumb) %>
+        <p><b><a href='/users/<%= comment.post.user.id %>'><%= comment.post.user.name %></a></b></p>
+        <small>Member since: <%= comment.post.user.created_at.strftime("%m/%d/%Y") %></small>
+        <small>Posts: <%= comment.post.user.posts.count %></small>
+      </div>
+
+      <div class='post_body'>
+        <%= comment.comment %>
+        <% if current_user = comment.post.user.name %>
+          <div class='users_post_options'>
+            <button class='btn btn-default btn-sm'><%= link_to "Edit", edit_post_comment_path(comment.post, comment) %></button>
+            <button class='btn btn-default btn-sm'><%= link_to "Delete", [comment.post, comment], method: :delete, data: { confirm: "Are you sure?" } %></button>
+          </div>
+        <% end %>
+        <!-- Ends post_body div -->
+      </div>
+      <!-- Ends post div -->
+      </div>
     </li>
   </ul>
-
-  <p><%= comment.comment %></p>
-  <p><%= comment.post.user.name %></p>
-
-  <%= link_to "Edit", edit_post_comment_path(comment.post, comment) %>
-	<%= link_to "Delete", [comment.post, comment], method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
+
+
+
+  <!-- <p><%= comment.comment %></p>
+  <p><%= comment.post.user.name %></p> -->

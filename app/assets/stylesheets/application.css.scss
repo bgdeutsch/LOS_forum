@@ -19,29 +19,52 @@
 
 // General styles
 
+$reddish: #dd5858;
+$dark: #333333;
 
 body{
-	margin: 0 auto;
-	background: #EDEFF0;
-	font-family: 'Open Sans', sans-serif;
+		margin: 0 auto;
+		background: #EDEFF0;
+		font-family: 'Open Sans', sans-serif;
 }
 
+.logo{
+		text-align: center;
+		font-size: 70px;
+		font-weight: 700;
+		color: #dd5858;
+		letter-spacing: 9px;
+		text-shadow: 1px 1px 1px $dark;
+}
+
+.site_header{
+		margin-top: -13px;
+    position: relative;
+    width: 103%;
+    margin-left: -14px;
+}
+
+.on{
+		color: $dark;
+		letter-spacing: -2px;
+}
 
 a:hover{
-	text-decoration: none;
+		text-decoration: none;
 }
 
 a, a:visited{
-	color: #FF725C;
+		color: $reddish;
 }
 
 .container{
-	width: 80%;
-	max-width: 1500px;
-	margin: 0 auto;
-	background: white;
-	margin-top: 25px;
-	padding-top: 0.9em;
+		width: 80%;
+		max-width: 1500px;
+		margin: 0 auto;
+		background: white;
+		margin-top: 21px;
+		padding-top: 0.9em;
+		border-radius: 3px;
 }
 
 hr{ margin-top: 12px; }
@@ -54,17 +77,23 @@ ul{ list-style-type: none; }
 abbr, accronym{ border-bottom: 0px!important; }
 
 .btn.btn-default.btn-sm{
-		letter-spacing: 3px;
-  	margin-top: -5px;
+		background: white;
+		border: none;
+		padding: .5em 1em;
+		border-radius: 3px;
+		border: 1px solid $reddish;
 }
 
+
 input[type="submit"] {
-		background: #FF725C;
+		background: $reddish;
 		border: none;
 		color: white;
 		padding: .5em 1em;
 		border-radius: 3px;
-}
+	}
+
+h1{ text-align: center; }
 
 .static{
 		p{
@@ -73,66 +102,67 @@ input[type="submit"] {
 			padding: 1em;
 			width: 90%;
 			margin-left: 50px;
+			font-weight: 700;
 		}
-		h1{ text-align: center; }
 }
 
 .website_author{
-	text-align: center;
-	font-size: 12px;
-	font-weight:bold;
-	padding: 18px;
+		text-align: center;
+		font-size: 12px;
+		font-weight:bold;
+		padding: 18px;
 }
+
 
 
 
 // Site header styles
 .welcome_user{
-	float: right;
-	margin-top: -37px;
-	padding-right: 12px;
-	color: #FF725C;
+		float: right;
+		margin-top: -37px;
+		padding-right: 12px;
+		color: $reddish;
 }
 
 .nav.nav-pills{
-	font-family: 'Open Sans', sans-serif;
-	background-color: #333333;
-	height: 57px;
-	padding: 10px;
-	a{
-		color: white;
-	}
-	a:hover{
-		background: none;
-	}
+		font-family: 'Open Sans', sans-serif;
+		background-color: $dark;
+		height: 57px;
+		padding: 10px;
+		font-weight: 700;
+		font-size: 15px;
+			a{
+				color: white;
+			}
+			a:hover{
+				background: $reddish;
+			}
 }
 
 .image_circular{
-	border-radius: 50%;
-	margin-top: -16px;
+		border-radius: 50%;
+		margin-top: -16px;
 }
 
 .dropdown{
-	float: left;
-	margin-right: 22px;
+		float: left;
+		margin-right: 22px;
 }
 
 .nav.nav-pills.guest{
-	background-color: #333333;
-	height: 57px;
-	padding: 4px;
-	float: right;
-	height: 30px;
-	margin-top: -4px;
-	a{
-		color: white;
-	}
-	a:hover{
-		background: none;
-	}
+		background-color: $dark;
+		height: 57px;
+		padding: 4px;
+		float: right;
+		height: 30px;
+		margin-top: -4px;
+			a{
+				color: white;
+			}
+			a:hover{
+				background: none;
+			}
 }
-
-
 
 // Home page / Post index styles
 #posts{
@@ -148,12 +178,19 @@ input[type="submit"] {
 		}
 		th{
 			color: white;
-			background: #333333;
+			background: $dark;
 			font-weight:normal;
 		}
 		th:first-child{
 			width: 555px;
 		}
+}
+
+#dLabel{
+		font-weight:700;
+			&:hover{
+				color: whitesmoke;
+			}
 }
 
 td, th{
@@ -162,18 +199,19 @@ td, th{
 
 .create_new_thread{
 		padding: .5em 1em;
-		border: 1px solid #ff725c;
-		background-color: #ff725c;
+		border: 1px solid $reddish;
+		background-color: white;
+		text-align: center;
 		border-radius: 3px;
-		color: white;
 		text-decoration: none;
 		float: right;
-		background: white;
 		margin-top: 3px;
-			a:visited{
-				color: white;
-			}
-}
+		width: 15%;
+			a:visited{ color: $reddish; }
+	}
+
+
+
 
 .user_post_options{
 		float: right;
@@ -189,28 +227,29 @@ td, th{
 }
 
 #already_voted{
-		background-color: #ff725c;
+		background-color: $reddish;
 		color: white;
+		margin-top: -7px;
 }
 
 //Post show page styles
 .post_header{
-		background: #333333;
-    color: white;
-    width: 100%;
-    height: 2.5em;
-    border-radius: 3px;
+		background: $dark;
+		color: white;
+		width: 100%;
+		height: 2.5em;
+		border-radius: 3px;
 }
 
 .post_created_at{
 		float: left;
-    padding: 7px 6px;
+		padding: 7px 6px;
 }
 
 .favorites{
 		float: right;
 		padding: 7px 10px;
-		color: #FF725C;
+		color: $reddish;
 		letter-spacing: 4px;
 }
 
@@ -222,32 +261,30 @@ td, th{
 }
 
 .pagination {
-    display: inline-block;
-    padding-left: 0;
-    border-radius: 0.3em;
-    margin-top: 8px;
+		display: inline-block;
+		padding-left: 0;
+		border-radius: 0.3em;
+		margin-top: 8px;
 		height: 5px;
 			li a{
-				color: #FF725C;
+				color: $reddish;
 			}
 }
 
 .pagination li.active a{
-		background: #FF725C;
-		border-color: #FF725C;
+		background: $reddish;
+		border-color: $reddish;
 			&:hover{
-				 background: #FF725C;
-				 border-color: #FF725C;
-
+				background: $reddish;
+				border-color: $reddish;
 			}
-}
-
+	}
 
 .post_body{
 		float: right;
-    margin-top: -13.5em;
+		margin-top: -13.5em;
 		padding:5px;
-    padding-right: 1.5em;
+		padding-right: 1.5em;
 		width:73%;
 		padding-left: 1.25em;
 }
@@ -270,17 +307,17 @@ td, th{
 }
 
 .user_listing {
-  	list-style: none;
-  	margin: 0;
+		list-style: none;
+		margin: 0;
 		height: 130px;
-  	border-bottom: 1px solid #f1f1f1;
+		border-bottom: 1px solid #f1f1f1;
 		padding-top: 8px
 }
 
 .image_float_left{
-	float: left;
-	padding-right: 15px;
-	margin-left: 50px;
+		float: left;
+		padding-right: 15px;
+		margin-left: 50px;
 }
 
 .right{
@@ -298,7 +335,7 @@ td, th{
 		font-weight: bold;
 }
 
-//User profile//
+	//User profile//
 
 .profile_pic{
 		float: left;
@@ -309,39 +346,42 @@ td, th{
 
 .profile_user_info{
 		padding: 17px;
-    float: left;
-    margin-left: 83px;
+		float: left;
+		margin-left: 83px;
 }
 
-// Commments
+	// Commments
 
 .comment_section{
-		textarea{
+		padding-top: 1em;
+		width: 106%;
+		margin-left: -41px;
+			textarea{
 				width: 100%;
-    		border: 1px solid #d1d1d1;
-    		border-radius: 3px;
-    		min-height: 165px;
-		}
-
+				border: 1px solid #d1d1d1;
+				border-radius: 3px;
+				min-height: 165px;
+			}
 }
 
 //Login//
+
 .login{
 		padding: 1.5em;
 		margin-left: 222px;
-		border: 1px solid #333333;
+		border: 1px solid $dark;
 		border-radius: 3px;
 		position: relative;
 		width: 51%;
 		margin-top: 52px;
 			h2{
 				font-size: 26px;
-		    font-weight: 700;
-		    text-align: center;
-		    margin-top: 10px;
+				font-weight: 700;
+				text-align: center;
+				margin-top: 10px;
 			}
 			header{
-				background: #333333;
+				background: $dark;
 				color: whitesmoke;
 				position: absolute;
 				width: 100%;
@@ -359,5 +399,19 @@ td, th{
 			p{
 				text-align: center;
 			}
+}
 
+.new_post_form{
+		padding: 1.5em;
+		margin-left: 222px;
+		border: 1px solid $dark;
+		border-radius: 3px;
+		position: relative;
+		width: 51%;
+		margin-top: 52px;
+			input{ width: 100%; }
+			textarea{
+				width: 100%;
+				height: 150px;
+		}
 }
