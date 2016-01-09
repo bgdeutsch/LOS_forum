@@ -38,8 +38,11 @@ class User < ActiveRecord::Base
         :activation_token
 
     has_attached_file :avatar,
-        styles: { medium: '300x300#', thumb: '100x100#', small: '50x50#' },
+        styles: { medium: '300x300#', thumb: '100x100#' },
         default_url: 'avatar.png'
+
+    mount_uploader :avatar,
+        PictureUploader
 
     validates_attachment_content_type :avatar,
         content_type: /\Aimage\/.*\Z/
