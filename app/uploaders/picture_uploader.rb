@@ -33,7 +33,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   #   # For Rails 3.1+ asset pipeline compatibility:
     ActionController::Base.helpers.asset_path('images/' + ["avatar.png"].compact.join('_'))
   #
-    # "./assets/images/" + [:thumb, "avatar.png"].compact.join('_')
+    "/images/" + ["avatar.png"].compact.join('_')
   end
 
   # Process files as they are uploaded:
