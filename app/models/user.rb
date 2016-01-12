@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
         styles: { medium: '300x300#', thumb: '100x100#' },
         default_url: 'avatar.png'
 
-    mount_uploader :avatar,
+    mount_uploader :avatar_url,
         PictureUploader
 
     validates_attachment_content_type :avatar,

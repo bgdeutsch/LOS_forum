@@ -9,7 +9,7 @@
       <span class='favorites'><span class="glyphicon glyphicon-heart"><%= @post.get_upvotes.size %></span></span>
     </header>
     <div class='user_information'>
-      <%= image_tag @post.user.avatar.url(:thumb) %>
+      <%= image_tag @post.user.avatar_url.url(:thumb) %>
       <p><b><a href='/users/<%= @post.user.id %>'><%= @post.user.name %></a></b></p>
       <small>Member since: <%= @post.user.created_at.strftime("%m/%d/%Y") %></small>
       <small>Posts: <%= @post.user.posts.count %></small>

@@ -4,7 +4,7 @@
   <% @users.each do |user| %>
     <li>
       <div class='user_listing'>
-        <%= image_tag user.avatar.url(:thumb), class: 'image_float_left' %>
+        <%= image_tag user.avatar_url.url(:thumb), class: 'image_float_left' %>
         <span class='left'>
           <%= link_to user.name, user %></br>
           <%= user.email %>
