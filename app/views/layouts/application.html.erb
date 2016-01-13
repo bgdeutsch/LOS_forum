@@ -4,6 +4,7 @@
   <title>LeBron on Skates v2.0</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
+  <%= favicon_link_tag 'favicon.ico' %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true, 'data-turbolinks-eval' => false %>
   <%= csrf_meta_tags %>
@@ -16,7 +17,7 @@
   </p>
 
   <div class='container'>
-    <header class='site_header'>
+    <header id='site_header'>
       <ul class='nav nav-pills'>
         <% if logged_in? %>
           <li><%= link_to "Home", posts_path %></li>
@@ -27,8 +28,6 @@
       </ul>
 
     <div class='welcome_user'>
-      <!-- <%= image_tag current_user.avatar.url(:small), class: 'image_circular' %> -->
-
       <div class="dropdown">
         <a id="dLabel" data-target="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           Account
@@ -36,32 +35,33 @@
         </a>
 
         <ul class="dropdown-menu" aria-labelledby="dLabel">
-            <li><%= link_to "Profile Settings", edit_user_path(current_user) %></li>
-            <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
+          <li><%= link_to "Profile Settings", edit_user_path(current_user) %></li>
+          <li><%= link_to "Log Out", logout_path, method: "delete" %></li>
         </ul>
       </div>
     </div>
 
-      <% else %>
-        <ul class='nav nav-pills guest'>
-          <li><%= link_to "Log in", login_path %></li>&nbsp;
-          <li><%= link_to "Sign Up", new_user_path %></li>
-        </ul>
-      <% end %>
-    </header>
-
-    <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% else %>
+    
+    <ul class='nav nav-pills guest'>
+      <li><%= link_to "Log in", login_path %></li>&nbsp;
+      <li><%= link_to "Sign Up", new_user_path %></li>
+    </ul>
     <% end %>
+  </header>
 
-    <%= yield %>
+  <% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+  <% end %>
 
-    <br />
-    <br />
-    <hr style='clear: both' />
-    <br />
-  </div>
+  <%= yield %>
 
-  <script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
+  <br />
+  <br />
+  <hr style='clear: both' />
+  <br />
+</div>
+
+<script src='https://code.jquery.com/jquery-2.1.4.min.js'></script>
 </body>
 </html>
