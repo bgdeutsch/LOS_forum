@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   # # such as updating their own profile and not any other user's profile information.
   def correct_user
     @user = User.find(params[:id])
-    redirect_to root_url unless @user == current_user
+    redirect_to '/' unless @user == current_user || current_user.isadmin?
   end
 
 
