@@ -7,15 +7,15 @@
         </header>
 
       <div class='user_information'>
-        <%= image_tag comment.post.user.avatar.url(:thumb) %>
-        <p><b><a href='/users/<%= comment.post.user.id %>'><%= comment.post.user.name %></a></b></p>
-        <small>Member since: <%= comment.post.user.created_at.strftime("%m/%d/%Y") %></small>
-        <small>Posts: <%= comment.post.user.posts.count %></small>
+        <%= image_tag comment.user.avatar_url.url(:thumb) %>
+        <p><b><a href='/users/<%= comment.user.id %>'><%= comment.user.name %></a></b></p>
+        <small>Member since: <%= comment.user.created_at.strftime("%m/%d/%Y") %></small>
+        <small>Posts: <%= comment.user.posts.count %></small>
       </div>
 
       <div class='post_body'>
         <%= comment.comment %>
-        <% if current_user = comment.post.user.name %>
+        <% if current_user.id == comment.user.id %>
           <div class='users_post_options'>
             <button class='btn btn-default btn-sm'><%= link_to "Edit", edit_post_comment_path(comment.post, comment) %></button>
             <button class='btn btn-default btn-sm'><%= link_to "Delete", [comment.post, comment], method: :delete, data: { confirm: "Are you sure?" } %></button>

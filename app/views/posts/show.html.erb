@@ -16,22 +16,25 @@
     </div>
     <div class='post_body'>
       <%= simple_format(@post.content) %>
-      <% if current_user = @post.user.name %><br /><br />
+      <% if current_user.id == @post.user.id %><br /><br />
       <div class='users_post_options'>
         <button class='btn btn-default btn-sm'><%= link_to 'Edit', edit_post_path(@post) %></button>
         <button class='btn btn-default btn-sm'><%= link_to 'Back', posts_path %></button>
         <button class='btn btn-default btn-sm'><%= link_to 'Delete', @post, method: :delete, data: { confirm: 'Do you really want to delete this post?' } %>
       </div>
+      <% else %>
+        <div class='users_post_options'>
+          <button class='btn btn-default btn-sm'><%= link_to 'Back', posts_path %></button>
+        </div>
       <% end %>
     </div>
   </div>
 
-
   <div class='comment_section'>
     <%= render @post.comments %>
-      <br />
-      <hr />
-      <h3>Submit a reply</h3>
+    <br />
+    <hr />
+    <h3>Submit a reply</h3>
     <%= render 'comments/form' %>
   </div>
 </div>

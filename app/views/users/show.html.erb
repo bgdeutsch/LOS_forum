@@ -9,7 +9,6 @@
 </h2>
 
 <p>
-
   <%= @user.email %>
 </p>
 
@@ -28,8 +27,6 @@
   <%= @user.posts.count %>
 </p>
 
-
-
 <% unless @user.description.blank? %>
 <article>
   <%= @user.description %>
@@ -39,12 +36,9 @@
 <br />
 <br />
 
-
 <p>
   <%= @user.name %> joined Lebron On Skates <%= time_ago_in_words(@user.created_at) %> ago.
 </p>
-
-
 
 <% if current_user == @user || current_user.try(:isadmin?) %>
 <%= link_to 'Edit Profile', edit_user_path(@user) %>
